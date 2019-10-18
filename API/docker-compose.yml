@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+  api:
+    build:
+      context: .
+    image: jtourkos/api:multi
+    ports:
+      - "8080:80"
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"

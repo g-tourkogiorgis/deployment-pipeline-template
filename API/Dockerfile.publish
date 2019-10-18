@@ -1,0 +1,6 @@
+﻿FROM mcr.microsoft.com/dotnet/core/aspnet
+
+WORKDIR /app
+COPY /bin/Debug/netcoreapp3.0/publish/ .
+
+ENTRYPOINT ["dotnet", "API.dll"]
