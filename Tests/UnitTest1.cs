@@ -9,5 +9,11 @@ namespace Tests
         {
             Assert.True(true);
         }
+
+        [Fact]
+        public void Test2()
+        {
+            Assert.False(true);
+        }
     }
 }
