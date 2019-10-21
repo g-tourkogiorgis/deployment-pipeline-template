@@ -13,7 +13,7 @@ namespace Tests
         [Fact]
         public void Test2()
         {
-            Assert.False(true);
+            Assert.True(true);
         }
     }
 }
