@@ -15,11 +15,5 @@ namespace Tests
         {
             Assert.True(true);
         }
-
-        [Fact]
-        public void Test3()
-        {
-            Assert.True(true);
-        }
     }
 }
