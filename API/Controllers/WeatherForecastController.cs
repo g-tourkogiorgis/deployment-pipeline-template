@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using MimeKit;
 
 namespace API.Controllers
@@ -14,19 +14,20 @@ namespace API.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        public int MAIL_PORT = 1025;
-        public string MAIL_HOST = "mail";
-
+        public string MAIL_HOST;
+        public int MAIL_PORT;
+        
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
-
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(IOptions<MailServerConfig> mailServerConfigAccessor)
         {
-            _logger = logger;
+            if (mailServerConfigAccessor == null) throw new ArgumentNullException(nameof(mailServerConfigAccessor));
+
+            var config = mailServerConfigAccessor.Value;
+            MAIL_HOST = config.Host;
+            MAIL_PORT = config.Port;
         }
 
         [HttpGet]
