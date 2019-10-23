@@ -4,4 +4,4 @@ services:
   api:
     image: my-registry:55000/api:ci-${API_BUILD_NUMBER-10}
     ports:
-      - "${PORT_GENERATOR-8080}:80"
+      - "${PORT_GENERATOR-80}:80"
